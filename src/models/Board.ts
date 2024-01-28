@@ -14,10 +14,10 @@ export class Board {
             const row: Cell[] = []
             for (let j=0;j<8;j++){
                 if((i+j)%2==0){
-                    row.push(new Cell(j,i,Colors.BLACK,null))
+                    row.push(new Cell(this,j,i,Colors.BLACK,null))
                 }
                 else{
-                row.push(new Cell(j,i,Colors.WHITE,null))
+                row.push(new Cell(this,j,i,Colors.WHITE,null))
                 }
             }
             this.cells.push(row)
@@ -85,7 +85,6 @@ export class Board {
     public getCopyBoard(): Board {
         const newBoard = new Board();
         newBoard.cells = this.cells;
-     
         return newBoard;
       }
 

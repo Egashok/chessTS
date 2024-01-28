@@ -10,6 +10,7 @@ interface BoardProps {
 }
 
 const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
+    
     const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
     function click(cell: Cell) {
 
@@ -17,12 +18,10 @@ const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
             selectedCell.moveFigure(cell);
             setSelectedCell(null);
 
-            updateBoard()
         }
-
-        if (cell.figure) {
-            setSelectedCell(cell)
-        }
+        else {
+           setSelectedCell(cell)
+     }
 
     }
 
@@ -32,6 +31,7 @@ const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
 
     function highlightCells() {
         board.highlightCells(selectedCell)
+        updateBoard()
     }
 
     function updateBoard() {
@@ -48,7 +48,7 @@ const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
                         <CellComponent
                             click={click}
                             cell={cell}
-                            selected={cell.x == selectedCell?.x && cell.y == selectedCell?.y}
+                            selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
                             key={cell.id}
                         />
                     )}
