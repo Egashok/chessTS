@@ -35,6 +35,10 @@ export class Cell  {
         }
         return false;
       }
+
+      kingUnderAttack(target:Cell):boolean{
+        return false
+      }
     
       isEmptyVertical(target: Cell): boolean {
         if (this.x !== target.x) {
@@ -44,7 +48,7 @@ export class Cell  {
         const min = Math.min(this.y, target.y);
         const max = Math.max(this.y, target.y);
         for (let y = min + 1; y < max; y++) {
-          if(!this.board.getCell(this.x, y).isEmpty()) {
+          if(!this.board.getCell(this.x, y).isEmpty()) {  
             return false
           }
         }
@@ -126,19 +130,14 @@ export class Cell  {
         this.figure.cell = this;
       }
     
-     
-   
 
   moveFigure(target: Cell) {
     if(this.figure && this.figure?.canMove(target)) {
       this.figure.moveFigure(target)
-    
+      
       target.setFigure(this.figure);
       this.figure = null;
     }
 
   }
-
-   
-
 }

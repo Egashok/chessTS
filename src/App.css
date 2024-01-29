@@ -9,6 +9,8 @@ align-items: center;
 width: 100vw;
 height: 100vh;
 background-color: rgb(110, 42, 165);
+margin: 0;
+padding: 0;
 
 }
 .board{
@@ -44,4 +46,9 @@ width: 12px;
 height: 12px;
 border-radius:50%;
 background-color: green;
+}
+.sidebar{
+  position: relative;
+    margin-left: 0;
+    padding-right: 200px;
 }
